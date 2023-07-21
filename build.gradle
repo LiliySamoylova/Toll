@@ -11,36 +11,6 @@ subprojects{
     }
 }
 
-project(':common') {
-    dependencies{
-        //compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
-
-    }
-}
-
-project(':server-core') {
-    dependencies {
-        implementation project(':common')
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
-    }
-}
-
-project(':server-ui') {
-    dependencies {
-        implementation project(':common')
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
-    }
-}
-
-project(':tracker-ui') {
-    dependencies {
-        implementation project(':common')
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
-    }
-}
-
-
 apply plugin: 'gradle-one-jar'
 
 buildscript {
@@ -52,6 +22,16 @@ buildscript {
     }
 }
 
+project(':common') {
+    apply plugin: 'java-library-distribution'
+    apply plugin: 'gradle-one-jar'
+
+    dependencies {
+        implementation project(':common')
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+
+    }
+}
 
 project(':tracker-core') {
     apply plugin: 'java-library-distribution'
@@ -71,3 +51,36 @@ project(':tracker-core') {
     }
 */
 }
+
+project(':tracker-ui') {
+    apply plugin: 'java-library-distribution'
+    apply plugin: 'gradle-one-jar'
+
+    dependencies {
+        implementation project(':common')
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+
+    }
+}
+
+project(':server-ui') {
+    apply plugin: 'java-library-distribution'
+    apply plugin: 'gradle-one-jar'
+
+    dependencies {
+        implementation project(':common')
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+
+    }
+}
+
+project(':server-core') {
+    apply plugin: 'java-library-distribution'
+    apply plugin: 'gradle-one-jar'
+
+    dependencies {
+        implementation project(':common')
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+    }
+}
+
