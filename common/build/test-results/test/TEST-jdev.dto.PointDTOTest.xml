@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="jdev.dto.PointDTOTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-07-18T03:37:02" hostname="LAPTOP-ILHI0USP" time="0.402">
+<testsuite name="jdev.dto.PointDTOTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-07-21T07:51:43" hostname="LAPTOP-ILHI0USP" time="0.538">
   <properties/>
-  <testcase name="toJson()" classname="jdev.dto.PointDTOTest" time="0.36"/>
-  <testcase name="decodeDto()" classname="jdev.dto.PointDTOTest" time="0.039"/>
-  <system-out><![CDATA[{"lat":56.0,"lon":74.0,"autoId":"o567gfd","time":1689651422692}
+  <testcase name="toJson()" classname="jdev.dto.PointDTOTest" time="0.421"/>
+  <testcase name="decodeDto()" classname="jdev.dto.PointDTOTest" time="0.107"/>
+  <system-out><![CDATA[{"lat":56.0,"lon":74.0,"autoId":"o567gfd","time":1689925903860}
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -22,6 +22,21 @@ project(':common') {
 project(':server-core') {
     dependencies {
         implementation project(':common')
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+    }
+}
+
+project(':server-ui') {
+    dependencies {
+        implementation project(':common')
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+    }
+}
+
+project(':tracker-ui') {
+    dependencies {
+        implementation project(':common')
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
     }
 }
 
