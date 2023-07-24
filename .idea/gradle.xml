@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/injection" />
+            <option value="$PROJECT_DIR$/properties" />
+            <option value="$PROJECT_DIR$/schedulinng" />
             <option value="$PROJECT_DIR$/server-core" />
             <option value="$PROJECT_DIR$/server-ui" />
             <option value="$PROJECT_DIR$/tracker-core" />

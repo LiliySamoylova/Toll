@@ -85,11 +85,21 @@ project(':server-core') {
 }
 
 project(':injection') {
-
     dependencies {
         implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
     }
-
-
 }
+
+project(':schedulinng') {
+    dependencies {
+        implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+    }
+}
+
+project(':properties') {
+    dependencies {
+        implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+    }
+}
+
 

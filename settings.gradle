@@ -6,4 +6,6 @@ include 'tracker-ui'
 include 'tracker-core'
 include 'trecker-core'
 include 'injection'
+include 'schedulinng'
+include 'properties'
 
