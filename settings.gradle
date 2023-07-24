@@ -5,4 +5,5 @@ include 'server-core'
 include 'tracker-ui'
 include 'tracker-core'
 include 'trecker-core'
+include 'injection'
 
