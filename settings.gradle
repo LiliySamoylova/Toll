@@ -8,4 +8,5 @@ include 'trecker-core'
 include 'injection'
 include 'schedulinng'
 include 'properties'
+include 'queue-fixed-rate'
 

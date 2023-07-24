@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/injection" />
             <option value="$PROJECT_DIR$/properties" />
+            <option value="$PROJECT_DIR$/queue-fixed-rate" />
             <option value="$PROJECT_DIR$/schedulinng" />
             <option value="$PROJECT_DIR$/server-core" />
             <option value="$PROJECT_DIR$/server-ui" />

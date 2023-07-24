@@ -102,4 +102,11 @@ project(':properties') {
     }
 }
 
+project(':queue-fixed-rate') {
+    dependencies {
+        implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+    }
+}
+
+
 
