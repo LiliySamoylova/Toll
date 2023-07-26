@@ -6,9 +6,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
-/**
- * Created by jdev on 26.03.2017.
- */
 @Service
 public class InjectedService {
     private int count;

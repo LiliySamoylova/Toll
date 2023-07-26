@@ -6,9 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-/**
- * Created by jdev on 26.03.2017.
- */
 @Configuration
 @EnableScheduling
 @PropertySource("classpath:/app.properties")
