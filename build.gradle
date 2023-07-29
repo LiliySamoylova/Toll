@@ -45,12 +45,6 @@ project(':tracker-core') {
         implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.2'
     }
 
-    //не понимаю, какая ошибка
-/*
-    task fatJar(type: OneJar) {
-        mainClass = 'jdev.tracker.Main'
-    }
-*/
 }
 
 project(':tracker-ui') {

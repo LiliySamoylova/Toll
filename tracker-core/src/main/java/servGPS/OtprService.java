@@ -1,5 +1,7 @@
 package servGPS;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -17,7 +19,8 @@ import java.util.List;
  */
 
 public class OtprService {
-    List qServer = new ArrayList();
+
+    List list = new ArrayList();
     @Autowired
     private HranService hranService;
 
@@ -26,4 +29,6 @@ public class OtprService {
     private void init() throws InterruptedException {
         hranService.take();
     }
+
+
 }
