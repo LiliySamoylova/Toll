@@ -47,6 +47,7 @@ public class GpsService {
     }
 
     public List callFromInit() {
+        List dataGps = new ArrayList();
         dataGps.add(double1Prop);
         dataGps.add(double2Prop);
         dataGps.add(intProp);

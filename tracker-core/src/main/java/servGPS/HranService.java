@@ -18,47 +18,44 @@ import java.util.concurrent.TimeUnit;
 /*
 Сервер хранения
 получил данные из Сервер GPS
+записал в очередь
  */
 
 @Service
 public class HranService {
   List dataGps = new ArrayList();
-
   @Autowired
   private GpsService gpsService;
 
-  @Scheduled (cron = "*/4 * * * * *") //PostConstruct
+  @Scheduled (cron = "*/1 * * * * *") //PostConstruct
   private void init() {
     dataGps = gpsService.callFromInit();
-    System.out.println("Получен List = " +dataGps);
+   // System.out.println("Получен List = " +dataGps);
   }
 
-
-  /*
     private static final Logger log = LoggerFactory.getLogger(HranService.class);
 
     private BlockingDeque<String> queue =  new LinkedBlockingDeque<>(100);
     private int putCount;
     private long previous;
 
-    @Scheduled(fixedDelay = 2000)
+    @Scheduled(fixedDelay = 3_000)
     void take() throws InterruptedException {
-        log.info("take trying!!!");
+        log.info("\nОчередь\n");
         long current = System.currentTimeMillis();
-        log.info((current - previous) + " ScheduledQueueService.take " + queue.poll(500, TimeUnit.MILLISECONDS));
+        log.info((current - previous) + "QueueService" + queue.poll(500, TimeUnit.MILLISECONDS));
 //        System.out.println((current - previous) + " ScheduledQueueService.take " + queue.take());
         previous = current;
-
     }
 
     @Scheduled (fixedDelay = 1_000)
     void put() throws InterruptedException {
         int i = putCount++;
         log.info("ScheduledQueueService.put " + i);
-        queue.put("new string => " + i);
+        queue.put("new string => " + dataGps);
 
     }
-*/
+
 
 
 
