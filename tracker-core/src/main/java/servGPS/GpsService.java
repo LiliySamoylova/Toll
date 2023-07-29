@@ -25,7 +25,6 @@ public class GpsService {
     Double double2Prop;
     @Value("${int.prop}")
     Integer intProp;
-    List dataGps = new ArrayList();
 
 
 /*

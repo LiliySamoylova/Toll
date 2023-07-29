@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 Сервер хранения
 получил данные из Сервер GPS
 записал в очередь
+отправил серверу отправки
  */
 
 @Service
@@ -39,12 +40,11 @@ public class HranService {
     private int putCount;
     private long previous;
 
-    @Scheduled(fixedDelay = 3_000)
+    @Scheduled(fixedDelay = 10_000)
     void take() throws InterruptedException {
         log.info("\nОчередь\n");
         long current = System.currentTimeMillis();
         log.info((current - previous) + "QueueService" + queue.poll(500, TimeUnit.MILLISECONDS));
-//        System.out.println((current - previous) + " ScheduledQueueService.take " + queue.take());
         previous = current;
     }
 
@@ -53,10 +53,7 @@ public class HranService {
         int i = putCount++;
         log.info("ScheduledQueueService.put " + i);
         queue.put("new string => " + dataGps);
-
     }
-
-
 
 
 }

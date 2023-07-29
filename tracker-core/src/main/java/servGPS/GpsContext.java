@@ -17,8 +17,12 @@ public class GpsContext {
         return new GpsService();
     }
     @Bean
-    public HranService HranService() {
+    public HranService hranService() {
         return new HranService();
+    }
+    @Bean
+    public OtprService otprService() {
+        return new OtprService();
     }
 
     @Bean
