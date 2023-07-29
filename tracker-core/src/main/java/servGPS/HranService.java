@@ -23,6 +23,17 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class HranService {
   List dataGps = new ArrayList();
+
+  @Autowired
+  private GpsService gpsService;
+
+  @Scheduled (cron = "*/4 * * * * *") //PostConstruct
+  private void init() {
+    dataGps = gpsService.callFromInit();
+    System.out.println("Получен List = " +dataGps);
+  }
+
+
   /*
     private static final Logger log = LoggerFactory.getLogger(HranService.class);
 
@@ -48,14 +59,7 @@ public class HranService {
 
     }
 */
-    @Autowired
-    private GpsService gpsService;
 
-    @PostConstruct
-    private void init() {
-      dataGps = gpsService.callFromInit();
-      System.out.println("List = " +dataGps);
-    }
 
 
 }

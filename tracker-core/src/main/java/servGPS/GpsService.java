@@ -19,18 +19,16 @@ import java.util.List;
 @Service
 public class GpsService {
     private int count;
-
     @Value("${double1.prop}")
     Double double1Prop;
     @Value("${double2.prop}")
     Double double2Prop;
     @Value("${int.prop}")
     Integer intProp;
-
     List dataGps = new ArrayList();
 
 
-
+/*
 
     @PostConstruct
     public void init1() {
@@ -38,11 +36,11 @@ public class GpsService {
         System.out.println("double2Prop = " + double2Prop);
         System.out.println("intProp = " + intProp);
     }
-
+ */
     @Scheduled(cron = "${cron.prop}")
     private void tick() {
         System.out.println("tick " + count++);
-        init1();
+        //init1();
         double1Prop = double1Prop + 0.007;
         double2Prop = double2Prop + 0.005;
         intProp++;
@@ -52,8 +50,10 @@ public class GpsService {
         dataGps.add(double1Prop);
         dataGps.add(double2Prop);
         dataGps.add(intProp);
-        System.out.println("DataSendService.callFromInit");
+        System.out.println("Данные записались в лист и передаются в сервер хранения");
      //  System.out.println("List = " +dataGps);
         return dataGps;
     }
+
+
 }
