@@ -1,11 +1,14 @@
 package servGPS;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 Сервер GPS
@@ -24,8 +27,13 @@ public class GpsService {
     @Value("${int.prop}")
     Integer intProp;
 
+    List dataGps = new ArrayList();
+
+
+
+
     @PostConstruct
-    public void init() {
+    public void init1() {
         System.out.println("double1Prop = " + double1Prop);
         System.out.println("double2Prop = " + double2Prop);
         System.out.println("intProp = " + intProp);
@@ -33,11 +41,19 @@ public class GpsService {
 
     @Scheduled(cron = "${cron.prop}")
     private void tick() {
-        System.out.println("InjectedService.tick " + count++);
-       // init();
+        System.out.println("tick " + count++);
+        init1();
         double1Prop = double1Prop + 0.007;
         double2Prop = double2Prop + 0.005;
         intProp++;
     }
 
+    public List callFromInit() {
+        dataGps.add(double1Prop);
+        dataGps.add(double2Prop);
+        dataGps.add(intProp);
+        System.out.println("DataSendService.callFromInit");
+     //  System.out.println("List = " +dataGps);
+        return dataGps;
+    }
 }

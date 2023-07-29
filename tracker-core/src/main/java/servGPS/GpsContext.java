@@ -16,6 +16,10 @@ public class GpsContext {
     public GpsService gpsService() {
         return new GpsService();
     }
+    @Bean
+    public HranService HranService() {
+        return new HranService();
+    }
 
     @Bean
     public TaskScheduler poolScheduler() {
