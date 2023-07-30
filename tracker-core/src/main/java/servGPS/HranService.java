@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
@@ -26,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class HranService {
     List dataGps = new ArrayList();
+    Queue data = new LinkedList();
 
     private static final Logger log = LoggerFactory.getLogger(HranService.class);
     private BlockingDeque<String> queue =  new LinkedBlockingDeque<>(100);
@@ -40,12 +43,13 @@ public class HranService {
    // System.out.println("Получен List = " +dataGps);
     }
 
-    @Scheduled(fixedDelay = 10_000)
+    @Scheduled(fixedDelay = 5_000)
     void take() throws InterruptedException {
-        log.info("\nОчередь\n");
+        log.info("Очередь");
         long current = System.currentTimeMillis();
         log.info((current - previous) + "QueueService" + queue.poll(500, TimeUnit.MILLISECONDS));
         previous = current;
+        data = queue;
     }
 
     @Scheduled (fixedDelay = 1_000)
@@ -60,8 +64,12 @@ public class HranService {
         ObjectMapper mapper = new ObjectMapper();
         String jsonGps = mapper.writeValueAsString(gpsJson);
 
-        log.info("ScheduledQueueService.put " + i);
-        queue.put("new string => " + jsonGps);
+        log.info("Queue tick " + i);
+        queue.put("Тройка => " + jsonGps);
+    }
+
+    public Queue otprInit() {
+        return data;
     }
 
 

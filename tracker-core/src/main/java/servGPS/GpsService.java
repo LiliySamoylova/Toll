@@ -1,12 +1,10 @@
 package servGPS;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +15,9 @@ import java.util.List;
  */
 
 @Service
-public class GpsService {
+public class GpsService{
     private int count;
+
     @Value("${double1.prop}")
     Double double1Prop;
     @Value("${double2.prop}")
@@ -26,16 +25,15 @@ public class GpsService {
     @Value("${int.prop}")
     Integer intProp;
 
+    /*
 
-/*
-
-    @PostConstruct
-    public void init1() {
-        System.out.println("double1Prop = " + double1Prop);
-        System.out.println("double2Prop = " + double2Prop);
-        System.out.println("intProp = " + intProp);
-    }
- */
+        @PostConstruct
+        public void init1() {
+            System.out.println("double1Prop = " + double1Prop);
+            System.out.println("double2Prop = " + double2Prop);
+            System.out.println("intProp = " + intProp);
+        }
+     */
     @Scheduled(cron = "${cron.prop}")
     private void tick() {
         System.out.println("tick " + count++);
@@ -50,10 +48,9 @@ public class GpsService {
         dataGps.add(double1Prop);
         dataGps.add(double2Prop);
         dataGps.add(intProp);
-        System.out.println("Данные записались в лист и передаются в сервер хранения");
+       // System.out.println("Данные записались в лист и передаются в сервер хранения");
      //  System.out.println("List = " +dataGps);
         return dataGps;
     }
-
 
 }

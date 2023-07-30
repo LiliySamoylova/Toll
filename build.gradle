@@ -43,6 +43,9 @@ project(':tracker-core') {
         implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
         implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
         implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.2'
+        // https://mvnrepository.com/artifact/de.micromata.jak/JavaAPIforKml
+        implementation group: 'de.micromata.jak', name: 'JavaAPIforKml', version: '2.2.0'
+
     }
 
 }
