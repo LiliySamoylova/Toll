@@ -23,7 +23,7 @@ public class GpsService{
     @Value("${double2.prop}")
     Double double2Prop;
     @Value("${int.prop}")
-    Integer intProp;
+    Double intProp;
 
     /*
 
@@ -44,7 +44,7 @@ public class GpsService{
     }
 
     public List callFromInit() {
-        List dataGps = new ArrayList();
+        List<Double> dataGps = new ArrayList<Double>();
         dataGps.add(double1Prop);
         dataGps.add(double2Prop);
         dataGps.add(intProp);

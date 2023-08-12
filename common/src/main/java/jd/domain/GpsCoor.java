@@ -1,13 +1,20 @@
-package servGPS;
+package jd.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class GpsJson {
+public class GpsCoor {
 
     public double shirota;
     public double dolgota;
-    public Double azimyt;
+    public double azimyt;
+
+    public GpsCoor(long incrementAndGet, String format) {
+    }
+
+    public GpsCoor(double shirota, double dolgota, double azimyt) {
+
+    }
 
     public double getShirota() {
         return shirota;
@@ -25,11 +32,11 @@ public class GpsJson {
         this.dolgota = dolgota;
     }
 
-    public Double getAzimyt() {
+    public double getAzimyt() {
         return azimyt;
     }
 
-    public void setAzimyt(Double autoId) {
+    public void setAzimyt(int autoId) {
         this.azimyt = autoId;
     }
 

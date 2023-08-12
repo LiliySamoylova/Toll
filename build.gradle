@@ -5,9 +5,8 @@ subprojects{
         mavenLocal()
     }
     dependencies {
-        //testCompile group: 'junit', name: 'junit', version: '4.12'
-        testImplementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
-        testImplementation group: 'junit', name: 'junit', version: '4.12'
+        compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+        compile group: 'junit', name: 'junit', version: '4.12'
 
     }
 }
@@ -26,9 +25,10 @@ buildscript {
 project(':common') {
     apply plugin: 'java-library-distribution'
     apply plugin: 'gradle-one-jar'
+    apply plugin: 'java'
 
     dependencies {
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
 
     }
 }
@@ -36,15 +36,20 @@ project(':common') {
 project(':tracker-core') {
     apply plugin: 'java-library-distribution'
     apply plugin: 'gradle-one-jar'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
 
     dependencies {
-        implementation project(':common')
-        // решение, которое я нашла для первой проблемы(Main), это прописать вручную библиотеку jackson.core ещё раз
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
-        implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
-        implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.2'
-        // https://mvnrepository.com/artifact/de.micromata.jak/JavaAPIforKml
-        implementation group: 'de.micromata.jak', name: 'JavaAPIforKml', version: '2.2.0'
+        compile project(':common')
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+        compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.2'
+        compile group: 'de.micromata.jak', name: 'JavaAPIforKml', version: '2.2.0'
+
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-devtools")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+        compile group: 'commons-io', name: 'commons-io', version: '2.5'
 
     }
 
@@ -55,8 +60,8 @@ project(':tracker-ui') {
     apply plugin: 'gradle-one-jar'
 
     dependencies {
-        implementation project(':common')
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        compile project(':common')
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
 
     }
 }
@@ -66,50 +71,95 @@ project(':server-ui') {
     apply plugin: 'gradle-one-jar'
 
     dependencies {
-        implementation project(':common')
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        compile project(':common')
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
 
     }
 }
+/*
+project(':server-core') {
+    apply plugin: 'java'
+
+    dependencies {
+        compile group: 'commons-io', name: 'commons-io', version: '2.5'
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        compile project(':common')
+    }
+}
+
+ */
+
+// Spring boot
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+
 
 project(':server-core') {
-    apply plugin: 'java-library-distribution'
-    apply plugin: 'gradle-one-jar'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
 
     dependencies {
-        implementation project(':common')
-        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-devtools")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+        compile group: 'commons-io', name: 'commons-io', version: '2.5'
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.7'
+        compile project(':common')
+    }
+
+    jar {
+        baseName = 'gessing-boot'
+        version =  '0.1.0'
     }
 }
 
-project(':injection') {
+
+
+project(':tracker-core-boot') {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+
     dependencies {
-        implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-devtools")
+        compile project(':common')
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+    }
+/*
+    jar {
+        baseName = 'gessing-boot'
+        version =  '0.1.0'
+    }
+
+ */
+}
+
+
+
+project(':t-c-mvc-boot') {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+
+    dependencies {
+        compile project(':common')
+        compile group: 'commons-io', name: 'commons-io', version: '2.5'
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-devtools")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+    }
+
+    jar {
+        baseName = 'gessing-boot'
+        version =  '0.1.0'
     }
 }
 
-project(':schedulinng') {
-    dependencies {
-        implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
-    }
-}
-
-project(':properties') {
-    dependencies {
-        implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
-    }
-}
-
-project(':queue-fixed-rate') {
-    dependencies {
-        implementation group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
-
-        // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-        implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-        // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
-        implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.2'
-    }
-}
 
 
 

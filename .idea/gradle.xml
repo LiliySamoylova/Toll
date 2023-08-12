@@ -16,7 +16,9 @@
             <option value="$PROJECT_DIR$/schedulinng" />
             <option value="$PROJECT_DIR$/server-core" />
             <option value="$PROJECT_DIR$/server-ui" />
+            <option value="$PROJECT_DIR$/t-c-mvc-boot" />
             <option value="$PROJECT_DIR$/tracker-core" />
+            <option value="$PROJECT_DIR$/tracker-core-boot" />
             <option value="$PROJECT_DIR$/tracker-ui" />
             <option value="$PROJECT_DIR$/trecker-core" />
           </set>
