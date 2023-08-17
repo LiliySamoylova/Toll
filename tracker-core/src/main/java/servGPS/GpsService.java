@@ -36,7 +36,7 @@ public class GpsService{
      */
     @Scheduled(cron = "${cron.prop}")
     private void tick() {
-        System.out.println("tick " + count++);
+        //System.out.println("tick " + count++);
         //init1();
         double1Prop = double1Prop + 0.007;
         double2Prop = double2Prop + 0.005;

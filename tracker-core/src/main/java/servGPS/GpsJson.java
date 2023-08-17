@@ -7,7 +7,7 @@ public class GpsJson {
 
     public double shirota;
     public double dolgota;
-    public Double azimyt;
+    public double azimyt;
 
     public double getShirota() {
         return shirota;

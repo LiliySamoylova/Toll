@@ -16,6 +16,10 @@ public class GpsCoor {
 
     }
 
+    public GpsCoor() {
+
+    }
+
     public double getShirota() {
         return shirota;
     }

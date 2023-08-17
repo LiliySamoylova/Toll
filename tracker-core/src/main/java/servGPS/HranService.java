@@ -44,7 +44,7 @@ public class HranService {
    // System.out.println("Получен List = " +dataGps);
     }
 
-    @Scheduled(fixedDelay = 5_000)
+    @Scheduled(fixedDelay = 10_000)
     void take() throws InterruptedException {
         log.info("Очередь");
         long current = System.currentTimeMillis();
@@ -52,7 +52,7 @@ public class HranService {
         previous = current;
         data = queue;
         strDataGps = String.valueOf(queue);
-        System.out.println("\n"+strDataGps);
+        //System.out.println("\n"+strDataGps);
     }
 
     @Scheduled (fixedDelay = 1_000, initialDelay = 2_000)
@@ -68,7 +68,7 @@ public class HranService {
         String jsonGps = mapper.writeValueAsString(gpsJson);
 
         log.info("Queue tick " + i);
-        queue.put("Point => " + jsonGps);
+        queue.put(jsonGps); //"Point => " +
     }
 
     public String otprInit() {
