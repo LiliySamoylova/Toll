@@ -1,25 +1,8 @@
+h1 {
+  color: blue;
+  border: 1px solid black;
+}
+
 p {
-   font-family: Liberation Sans, helvetica, sans-serif;
-}
-h2 {
-   font-size: 22pt;
-   color: green;
-   background: white;
-}
-.note {
-   color: green;
-   background-color: white;
-   font-weight: bold;
-}
-p#paragraph1 {
-   padding-left: 12px;
-}
-a:hover {
-   text-decoration: none;
-}
-#news p {
-   color: green;
-}
-[type="button"] {
-   background-color: green;
+  color: green;
 }
