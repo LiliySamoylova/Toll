@@ -26,14 +26,5 @@ public class Application {
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
-   /*
-    @Bean
-    public HttpMessageConverter<String> responseBodyConverter() {
-        StringHttpMessageConverter converter = new StringHttpMessageConverter(StandardCharsets.UTF_8);
-        converter.setSupportedMediaTypes(Arrays.asList(new MediaType("text", "plain", Charset.forName("UTF-8"))));
-        return converter;
-    }
-
-    */
 
 }

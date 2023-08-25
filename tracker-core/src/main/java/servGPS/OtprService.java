@@ -1,33 +1,17 @@
 package servGPS;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jd.domain.GpsCoor;
-import org.apache.commons.io.IOUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
 /*
 Сервер отправки
@@ -39,7 +23,7 @@ import java.util.Queue;
 @Component
 @Service
 public class OtprService {
-    //Queue data = new LinkedList();
+
     String data;
     @Autowired
     private HranService hranService;
@@ -63,16 +47,15 @@ public class OtprService {
         data = hranService.otprInit();
 
         String resourceUrl = "http://localhost:8080/gps";
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        HttpEntity<String> entity = new HttpEntity<String>(data, headers); //data
+       // HttpHeaders headers = new HttpHeaders();
+       // headers.setContentType(MediaType.APPLICATION_JSON);
+       // HttpEntity<String> entity = new HttpEntity<String>(data, headers); //data
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
+       // restTemplate.getMessageConverters().add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
 
-        String gpsData = restTemplate.postForObject(resourceUrl, entity, String.class);
+        String gpsData = restTemplate.postForObject(resourceUrl, data, String.class); //entity
 
-        log.info("Service Отправки:"+gpsData);
+        log.info("Coordinate:"+gpsData);
 
         return gpsData;
     }

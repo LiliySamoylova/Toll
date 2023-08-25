@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security</title>
+    </head>
+    <body>
+        <h1>Вы аутентифицированный пользователь!</h1>
+
+        <h1>если Вы - CLIENT</h1>
+        <p>то Вам доступны данные страницы:</p>
+        <p>Маршруты <a th:href="@{/routes}">здесь</a></p>
+        <p>Платежи <a th:href="@{/payments}">здесь</a></p>
+
+        <h1>если Вы - MANAGER</h1>
+        <p>то Вам доступны страницы CLIENTа, а ткаже данная страница:</p>
+        <p>Регистрация клиента <a th:href="@{/registerClient }">здесь</a></p>
+
+        <h1>если Вы - ROOT</h1>
+        <p>то Вам доступны страницы CLIENTа и MANAGERа, а ткаже данная страница:</p>
+        <p>Регистрация клиента <a th:href="@{/registerManager }">здесь</a></p>
+
+        <h1>Выйдите из системы, чтобы сменить роль</h1>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Выйти из системы"/>
+        </form>
+    </body>
+</html>

@@ -3,26 +3,21 @@ package controllers;
 import jd.domain.GpsCoor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-public class firstController {
+public class FirstController {
     private final AtomicLong counter = new AtomicLong();
     private static final String template = "Coordinati, %s!";
 
-    private static final Logger log = LoggerFactory.getLogger(firstController.class);
+    private static final Logger log = LoggerFactory.getLogger(FirstController.class);
 
     @RequestMapping("/gess")
     public GpsCoor greeting(String name) {
