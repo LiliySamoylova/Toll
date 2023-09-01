@@ -51,6 +51,8 @@ project(':tracker-core') {
         compile group: 'commons-io', name: 'commons-io', version: '2.5'
 
         testCompile("org.springframework.boot:spring-boot-starter-test")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
+        testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.22'
     }
 
 }

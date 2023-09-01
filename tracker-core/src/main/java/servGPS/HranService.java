@@ -42,17 +42,18 @@ public class HranService {
     }
 
     @Scheduled(fixedDelay = 10_000)
-    void take() throws InterruptedException {
+    public String take() throws InterruptedException {
         log.info("Queue");
         long current = System.currentTimeMillis();
         log.info((current - previous) + "QueueService" + queue.poll(500, TimeUnit.MILLISECONDS));
         previous = current;
         strDataGps = String.valueOf(queue);
         //System.out.println("\n"+strDataGps);
+        return strDataGps;
     }
 
     @Scheduled (fixedDelay = 1_000, initialDelay = 2_000)
-    void put() throws InterruptedException, JsonProcessingException {
+    public String put() throws InterruptedException, JsonProcessingException {
         int i = putCount++;
 
         GpsJson gpsJson = new GpsJson();
@@ -65,11 +66,7 @@ public class HranService {
 
         log.info("Queue tick " + i);
         queue.put(jsonGps); //"Point => " +
+        return jsonGps;
     }
-
-    public String otprInit() {
-        return strDataGps;
-    }
-
 
 }

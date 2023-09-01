@@ -2,6 +2,7 @@ package servGPS;
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,6 @@ import java.util.List;
 первоначальные данные взял из файла app.properties (широты, долготы, азимута)
 передает данные каждую секунду серверу хранения (в очередь)
  */
-
 @Service
 public class GpsService{
     private int count;
@@ -24,6 +24,17 @@ public class GpsService{
     Double double2Prop;
     @Value("${int.prop}")
     Double intProp;
+
+    public GpsService() {
+
+    }
+
+    public GpsService(double shirota, double dolgota, double azimyt) {
+        this.double1Prop = shirota;
+        this.double2Prop = dolgota;
+        this.intProp = azimyt;
+
+    }
 
     /*
 
@@ -43,7 +54,7 @@ public class GpsService{
         intProp++;
     }
 
-    public List callFromInit() {
+    public List<Double> callFromInit() {
         List<Double> dataGps = new ArrayList<Double>();
         dataGps.add(double1Prop);
         dataGps.add(double2Prop);

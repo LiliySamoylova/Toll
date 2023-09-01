@@ -26,7 +26,7 @@ public class OtprService {
 
     String data;
     @Autowired
-    private HranService hranService;
+    public HranService hranService;
     private static final Logger log = LoggerFactory.getLogger(OtprService.class);
 
 
@@ -43,17 +43,13 @@ public class OtprService {
 
     @Scheduled(fixedDelay = 10_000, initialDelay = 10_000)
     @RequestMapping(value = "/gps", method = RequestMethod.POST) //produces={"text/plain; application/json"} charset=UTF-8
-    public String postRestT() throws IOException {
-        data = hranService.otprInit();
+    public String postRestT() throws IOException, InterruptedException {
+        data = hranService.take();
 
         String resourceUrl = "http://localhost:8080/gps";
-       // HttpHeaders headers = new HttpHeaders();
-       // headers.setContentType(MediaType.APPLICATION_JSON);
-       // HttpEntity<String> entity = new HttpEntity<String>(data, headers); //data
         RestTemplate restTemplate = new RestTemplate();
-       // restTemplate.getMessageConverters().add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
 
-        String gpsData = restTemplate.postForObject(resourceUrl, data, String.class); //entity
+        String gpsData = restTemplate.postForObject(resourceUrl, data, String.class);
 
         log.info("Coordinate:"+gpsData);
 
