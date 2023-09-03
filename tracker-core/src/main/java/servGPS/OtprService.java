@@ -23,7 +23,7 @@ import java.io.IOException;
 @Component
 @Service
 public class OtprService {
-
+    String gpsData;
     String data;
     @Autowired
     public HranService hranService;
@@ -44,12 +44,12 @@ public class OtprService {
     @Scheduled(fixedDelay = 10_000, initialDelay = 10_000)
     @RequestMapping(value = "/gps", method = RequestMethod.POST) //produces={"text/plain; application/json"} charset=UTF-8
     public String postRestT() throws IOException, InterruptedException {
-        data = hranService.take();
+        data = hranService.take(); //
 
         String resourceUrl = "http://localhost:8080/gps";
         RestTemplate restTemplate = new RestTemplate();
 
-        String gpsData = restTemplate.postForObject(resourceUrl, data, String.class);
+        gpsData = restTemplate.postForObject(resourceUrl, data, String.class);
 
         log.info("Coordinate:"+gpsData);
 
