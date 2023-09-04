@@ -26,7 +26,7 @@ public class OtprService {
     String gpsData;
     String data;
     @Autowired
-    public HranService hranService;
+    public HranService hranService = new HranService();
     private static final Logger log = LoggerFactory.getLogger(OtprService.class);
 
 
