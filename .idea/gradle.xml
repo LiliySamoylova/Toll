@@ -4,25 +4,17 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="PLATFORM" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/SpringDataJPA" />
             <option value="$PROJECT_DIR$/common" />
-            <option value="$PROJECT_DIR$/injection" />
-            <option value="$PROJECT_DIR$/properties" />
-            <option value="$PROJECT_DIR$/queue-fixed-rate" />
-            <option value="$PROJECT_DIR$/schedulinng" />
             <option value="$PROJECT_DIR$/server-core" />
             <option value="$PROJECT_DIR$/server-ui" />
-            <option value="$PROJECT_DIR$/t-c-mvc-boot" />
             <option value="$PROJECT_DIR$/tracker-core" />
-            <option value="$PROJECT_DIR$/tracker-core-boot" />
             <option value="$PROJECT_DIR$/tracker-ui" />
-            <option value="$PROJECT_DIR$/trecker-core" />
           </set>
         </option>
       </GradleProjectSettings>
