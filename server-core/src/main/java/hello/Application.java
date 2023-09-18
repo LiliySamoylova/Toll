@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 @SpringBootApplication
-@ComponentScan({"hello","services","controllers"})
+@ComponentScan({"hello","controllers"})
 public class Application {
 
     public static void main(String[] args) {

@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-class GpsServiceTest {
+class HranDataServiceTest {
     private List<Double> dataGps, result;
 
 

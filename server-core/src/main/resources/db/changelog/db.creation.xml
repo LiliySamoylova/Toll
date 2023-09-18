@@ -4,13 +4,12 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
     <changeSet id="db.creation" author="jdev">
         <sql>
-
-            CREATE TABLE GPS
+            CREATE TABLE PERSON
             (
                 ID integer AUTO_INCREMENT PRIMARY KEY,
-                MODEL varchar(32)
+                NAME char,
+                PASSWORD char
             )
-
         </sql>
     </changeSet>
 </databaseChangeLog>

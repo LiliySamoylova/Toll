@@ -3,6 +3,7 @@ package servGPS;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jd.dao.HranData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,12 @@ public class HranService {
     private final BlockingDeque<String> queue =  new LinkedBlockingDeque<>(100);
     private int putCount;
     private long previous;
+
     @Autowired
     private GpsService gpsService;
+    HranData hranData;
+
+
 
     @Scheduled (cron = "*/1 * * * * *") //PostConstruct
     private void init() {
@@ -60,6 +65,7 @@ public class HranService {
         gpsJson.shirota = (double) dataGps.get(0);
         gpsJson.dolgota = (double) dataGps.get(1);
         gpsJson.azimyt = (double) dataGps.get(2);
+
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonGps = mapper.writeValueAsString(gpsJson);

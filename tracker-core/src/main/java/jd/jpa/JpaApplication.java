@@ -1,7 +1,8 @@
 package jd.jpa;
 
-import jd.dao.Gps;
-import jd.dao.repo.RocketRepository;
+
+import jd.dao.HranData;
+import jd.dao.repo.HranDataRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,11 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableJpaRepositories("jd.dao")
-@EntityScan(basePackageClasses = Gps.class)
+@EntityScan(basePackageClasses = HranData.class)
 public class JpaApplication implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(JpaApplication.class);
-    private List<Gps> all;
+    private List<HranData> all;
 
     public static void main(String[] args) {
         SpringApplication.run(JpaApplication.class, args);
@@ -33,53 +34,42 @@ public class JpaApplication implements CommandLineRunner {
     }
 
     @Autowired
-    RocketRepository rocketRepository;
+    HranDataRepository HranDataRepository;
 
     @Override
     public void run(String... args) throws Exception {
-        read();
+        //read();
 
-        Gps soyuz = create( "Soyuz");
-        Gps falcon = create( "Falcon");
-        Gps angara = create("Angara");
+        HranData gps1 = create( 91.41367, 53.09497, 318.0);
+        HranData gps2 = create( 91.47, 53.07, 319.0);
+        HranData gps3 = create(91.05, 53.97, 320.0);
         log.info("=========== after create");
         read();
 
-        update(soyuz, "Soyuz 2");
-        update(falcon, "Falcon 9");
-        update(angara, "Angara A5");
+        update(gps1, 92.7, 58.2, 321.0);
 
         log.info("=========== after update");
         read();
 
-        delete(soyuz);
-        log.info("=========== after delete 1");
+        delete(gps1);
+        log.info("=========== after delete");
         read();
 
-        delete(falcon);
-        log.info("=========== after delete 2");
-        read();
-
-        delete(angara);
-        log.info("=========== after delete 3");
-        read();
-
-        delete(angara);
-        log.info("=========== after delete 4");
-        read();
     }
 
-    private void delete(Gps gps) {
-        rocketRepository.delete(gps);
+    private void delete(HranData gps) {
+        HranDataRepository.delete(gps);
     }
 
-    private void update(Gps gps, String model) {
-        gps.setModel(model);
-        rocketRepository.save(gps);
+    private void update(HranData gps, Double shirota, Double dolgota, Double azimyt) {
+        gps.setShirota(shirota);
+        gps.setDolgota(dolgota);
+        gps.setAzimyt(azimyt);
+        HranDataRepository.save(gps);
     }
 
     private void read() {
-         all = (List<Gps>) rocketRepository.findAll();
+         all = (List<HranData>) HranDataRepository.findAll();
 
          if (all.size() == 0) {
              log.info("NO RECORDS");
@@ -88,9 +78,11 @@ public class JpaApplication implements CommandLineRunner {
          }
     }
 
-    private Gps create(String model) {
-        Gps gps = new Gps();
-        gps.setModel(model);
-        return rocketRepository.save(gps);
+    private HranData create(Double shirota, Double dolgota, Double azimyt) {
+        HranData gps = new HranData();
+        gps.setShirota(shirota);
+        gps.setDolgota(dolgota);
+        gps.setAzimyt(azimyt);
+        return HranDataRepository.save(gps);
     }
 }
